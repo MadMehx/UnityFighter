@@ -10,9 +10,15 @@ public class CharacterMovement : MonoBehaviour
     static float right = 0;
     static float left = 180;
 
+    void Start()
+    {
+        animator = GetComponent<Animator>();
+    }
+
     // Update is called once per frame
     void Update()
     {
+
         //assigns direction based on player position
         float playerDirection = right;
         if (this.transform.eulerAngles.y == 180 || this.transform.eulerAngles.y == -180)
@@ -26,14 +32,22 @@ public class CharacterMovement : MonoBehaviour
         float vertical = Input.GetAxisRaw("Vertical");
         Vector3 direction = new Vector3(0f, vertical, horizontal).normalized;
 
+        //triggers the walk animation
+        if (horizontal != 0)
+        {
+            WalkingAnimation(true);
+        }
+
         //Turns player model towards a new direction if necessary
         if (horizontal < 0f && playerDirection == right)
         {
             transform.rotation = Quaternion.Euler(0f, 180f, 0f);
+            FlipAnimation();
         }
         else if (horizontal > 0f && playerDirection == left)
         {
             transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+            FlipAnimation();
         }
 
         //moves the player along the direction vector
@@ -43,11 +57,20 @@ public class CharacterMovement : MonoBehaviour
         }
 
         //triggers the walk animation
-        WalkingAnimation();
+        if (horizontal == 0)
+        {
+            WalkingAnimation(false);
+        }
     }
 
-    void WalkingAnimation()
+    void WalkingAnimation(bool value)
     {
-        //animator.SetTrigger("Move");
+        animator.SetBool("Move", value);
+    }
+
+    void FlipAnimation()
+    {
+        Debug.Log("And Flop");
+        animator.SetTrigger("Flip");
     }
 }
