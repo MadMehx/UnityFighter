@@ -482,6 +482,7 @@ GameObject:
   - component: {fileID: 795276028}
   - component: {fileID: 795276027}
   - component: {fileID: 795276026}
+  - component: {fileID: 795276029}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -554,6 +555,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+--- !u!114 &795276029
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 795276025}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d9d73e33f88acd4f8b1792425ab598e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 1462555718}
+  smoothSpeed: 0.125
+  offset: {x: 14.26, y: 2, z: -0.49}
 --- !u!1 &1462555715
 GameObject:
   m_ObjectHideFlags: 0
@@ -563,10 +579,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1462555718}
-  - component: {fileID: 1462555717}
-  - component: {fileID: 1462555716}
   - component: {fileID: 1462555719}
-  - component: {fileID: 1462555720}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -574,40 +587,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1462555716
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1462555715}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 634003cca24e655488d8ea80dd3abac2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  controller: {fileID: 1462555717}
-  animator: {fileID: 0}
-  speed: 6
-  turnSmoothTime: 0.1
---- !u!143 &1462555717
-CharacterController:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1462555715}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Height: 2
-  m_Radius: 0.5
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
-  m_SkinWidth: 0.08
-  m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &1462555718
 Transform:
   m_ObjectHideFlags: 0
@@ -633,7 +612,7 @@ Animator:
   m_GameObject: {fileID: 1462555715}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 0a08ea5cf3f37254788719c99e9c23d3, type: 2}
+  m_Controller: {fileID: 9100000, guid: fabef64f8ce7b8847ba92046e5a962ca, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -642,20 +621,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!136 &1462555720
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1462555715}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 1.8142672
-  m_Direction: 1
-  m_Center: {x: 0, y: -0.110415936, z: 0}
 --- !u!1 &1786112732
 GameObject:
   m_ObjectHideFlags: 0
