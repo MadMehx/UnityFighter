@@ -70,7 +70,6 @@ public class CharacterMovement : MonoBehaviour
 
     void FlipAnimation()
     {
-        Debug.Log("And Flop");
         animator.SetTrigger("Flip");
     }
 }
