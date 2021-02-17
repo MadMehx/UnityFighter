@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Punch : MonoBehaviour
+public class BasicAttack : MonoBehaviour
 {
     public CharacterController controller2;
     public Animator animator;
