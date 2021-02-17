@@ -8,19 +8,22 @@ ModelImporter:
     second: Idle
   - first:
       74: -6549137785526712554
-    second: Run
+    second: Joe_Run
   - first:
       74: -2172708969805231307
-    second: Punch 1
+    second: Joe_Punch 1
   - first:
       74: -8183804912015062020
-    second: Punch 2
+    second: Joe_Punch 2
   - first:
       74: -7813635296899823279
-    second: Crouch
+    second: Joe_Crouch
   - first:
       74: 5539831331247536789
-    second: Jump
+    second: Joe_Jump
+  - first:
+      74: -8241186298732079366
+    second: Joe_Idle
   externalObjects: {}
   materials:
     materialImportMode: 1
@@ -50,7 +53,7 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Idle
+      name: Joe_Idle
       takeName: Joe|JoeAction
       internalID: 0
       firstFrame: 0
@@ -79,7 +82,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Run
+      name: Joe_Run
       takeName: Joe|JoeAction
       internalID: 0
       firstFrame: 60
@@ -108,7 +111,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Punch 1
+      name: Joe_Punch 1
       takeName: Joe|JoeAction
       internalID: 0
       firstFrame: 80
@@ -137,7 +140,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Punch 2
+      name: Joe_Punch 2
       takeName: Joe|JoeAction
       internalID: 0
       firstFrame: 86
@@ -166,7 +169,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Crouch
+      name: Joe_Crouch
       takeName: Joe|JoeAction
       internalID: 0
       firstFrame: 100
@@ -195,7 +198,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Jump
+      name: Joe_Jump
       takeName: Joe|JoeAction
       internalID: 0
       firstFrame: 105
