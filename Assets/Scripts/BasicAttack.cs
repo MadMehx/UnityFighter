@@ -20,7 +20,8 @@ public class BasicAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.C))
+        if (Input.GetAxisRaw("Horizontal") == 0)
+            if (Input.GetKeyDown(KeyCode.C))
         {
             if ((Time.time - lastTapTime) < tapSpeed)
             {

@@ -503,7 +503,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 2091484191}
   smoothSpeed: 0.125
-  offset: {x: 20, y: 0, z: 0}
+  offset: {x: 11, y: 0, z: 0}
 --- !u!1 &1786112732
 GameObject:
   m_ObjectHideFlags: 0
@@ -707,7 +707,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 485a6a28ad27ea94783c18904c39e4ac, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.0256306
+      value: 1.0655681
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 485a6a28ad27ea94783c18904c39e4ac, type: 3}
       propertyPath: m_LocalPosition.x
@@ -715,7 +715,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 485a6a28ad27ea94783c18904c39e4ac, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.0040923
+      value: -1.0772892
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 485a6a28ad27ea94783c18904c39e4ac, type: 3}
       propertyPath: m_LocalPosition.z
@@ -814,6 +814,20 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1935838002
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1935837998}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6249fb0a9a257ab4c94ce4a213d97f2c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controller3: {fileID: 2091484190}
+  animator: {fileID: 1935838001}
 --- !u!1 &2091484189
 GameObject:
   m_ObjectHideFlags: 0
@@ -857,8 +871,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2091484189}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.232, z: -7.66}
-  m_LocalScale: {x: 1, y: 0.97501, z: 1}
+  m_LocalPosition: {x: 0, y: 1.282, z: -7.66}
+  m_LocalScale: {x: 1, y: 0.9384666, z: 1}
   m_Children:
   - {fileID: 1935837997}
   m_Father: {fileID: 0}
