@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharacterMovement : MonoBehaviour
+public class Placeholder: MonoBehaviour
 {
     public CharacterController controller;
     public Animator animator;
@@ -11,11 +11,9 @@ public class CharacterMovement : MonoBehaviour
     public float jump = 10;
     public float distToGround = 1f;
 
-    private float grav;
-
+    private float vVelocity;
     static float right = 0;
     static float left = 180;
-    public bool isAble = true;
 
     Vector3 direction;
 
@@ -39,10 +37,7 @@ public class CharacterMovement : MonoBehaviour
 
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
-
-        //depreciated
-        //Vector3 direction = new Vector3(0f, vertical, horizontal).normalized;
-        //new directional vector created to restrict vertical movement
+        //direction = new Vector3(0f, vertical, horizontal).normalized;
         direction.z = horizontal;
 
         //triggers the walk animation
@@ -64,7 +59,7 @@ public class CharacterMovement : MonoBehaviour
         }
 
         //moves the player along the direction vector
-        if (direction.magnitude >= 0.1f && isAble)
+        if (direction.magnitude >= 0.1f)
         {
             controller.Move(direction * speed * Time.deltaTime);
         }
@@ -75,7 +70,7 @@ public class CharacterMovement : MonoBehaviour
             WalkingAnimation(false);
         }
 
-        //handles the gravity and jump mechanics
+
         gravityHandler(vertical, horizontal);
     }
 
@@ -89,21 +84,16 @@ public class CharacterMovement : MonoBehaviour
         animator.SetTrigger("Flip");
     }
 
-    public void SetAble(bool value)
-    {
-        isAble = value;
-    }
-
-    //handles jumping takes in the vertical and horizontal inputs from main
+    //handles jumping
     void gravityHandler(float v, float h)
     {
         if (grounded())
         {
             //Debug.Log("jumpable");
-            grav = -weight * Time.deltaTime;
+            vVelocity = -weight * Time.deltaTime;
             if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W))
             {
-                grav = jump;
+                vVelocity = jump;
                 //direction.y = jump;
                 //direction = new Vector3(0, jump, h / 2);
             }
@@ -111,33 +101,33 @@ public class CharacterMovement : MonoBehaviour
         else
         {
             //Debug.Log("fall as all mortals must");
-            grav -= weight * Time.deltaTime;
+            vVelocity -= weight * Time.deltaTime;
             //direction.y -= weight * Time.deltaTime;
             //direction = new Vector3(0, direction.y - weight * Time.deltaTime, h / 2);
             //direction *= Time.deltaTime;
         }
-        direction = new Vector3(0, grav, 0);
+        direction = new Vector3(0, vVelocity, 0);
 
-        //checks if grounded and what ground type
-        bool grounded()
+    }
+
+    //checks if grounded and what ground type
+    bool grounded()
+    {
+        if (Physics.Raycast(transform.position, Vector3.down, distToGround + 0.1f))
         {
-            if (Physics.Raycast(transform.position, Vector3.down, distToGround + 0.1f))
-            {
-                Debug.Log("grounded" + groundType());
-                return true;
-            }
-            Debug.Log("not grounded");
-            return false;
-
-
+            Debug.Log("grounded" + groundType());
+            return true;
         }
+        Debug.Log("not grounded");
+        return false;
 
-        //returns the name of the platform currently being stood on
-        string groundType()
-        {
-            RaycastHit hit;
-            Physics.Raycast(transform.position, Vector3.down, out hit, distToGround + 0.1f);
-            return hit.transform.name;
-        }
+
+    }
+
+    string groundType()
+    {
+        RaycastHit hit;
+        Physics.Raycast(transform.position, Vector3.down, out hit, distToGround + 0.1f);
+        return hit.transform.name;
     }
 }

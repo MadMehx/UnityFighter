@@ -7,9 +7,6 @@ public class Slam_Attack : MonoBehaviour
     public CharacterController controller3;
     public Animator animator;
 
-    public CharacterMovement a;
-    a = GameObject.GetComponent<CharacterMovement>();
-
     // Start is called before the first frame update
     void Start()
     {
