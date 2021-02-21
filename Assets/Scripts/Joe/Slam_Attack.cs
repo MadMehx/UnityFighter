@@ -7,6 +7,9 @@ public class Slam_Attack : MonoBehaviour
     public CharacterController controller3;
     public Animator animator;
 
+    public float attackRate = 1f;
+    float nextAttackTime = 0f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -16,14 +19,23 @@ public class Slam_Attack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Do slam animation
-        if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
+        if (Time.time >= nextAttackTime)
         {
-            if(Input.GetKeyDown(KeyCode.C))
+            //Do slam animation
+            if (Input.GetAxisRaw("Horizontal") != 0)
             {
-                animator.SetTrigger("Slam");
+                if (Input.GetKeyDown(KeyCode.C))
+                {
+                    doSlam();
+                    nextAttackTime = Time.time + 1f / attackRate;
+                }
             }
         }
+    }
+
+    void doSlam()
+    {
+        animator.SetTrigger("Slam");
     }
 
 

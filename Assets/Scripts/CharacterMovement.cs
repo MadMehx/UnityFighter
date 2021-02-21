@@ -15,7 +15,7 @@ public class CharacterMovement : MonoBehaviour
 
     static float right = 0;
     static float left = 180;
-    public bool isAble = true;
+    public static bool isAble = true;
 
     Vector3 direction;
 
@@ -27,7 +27,6 @@ public class CharacterMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         //assigns direction based on player position
         float playerDirection = right;
         if (this.transform.eulerAngles.y == 180 || this.transform.eulerAngles.y == -180)
@@ -46,7 +45,7 @@ public class CharacterMovement : MonoBehaviour
         direction.z = horizontal;
 
         //triggers the walk animation
-        if (horizontal != 0)
+        if (horizontal != 0 && isAble)
         {
             WalkingAnimation(true);
         }
@@ -91,6 +90,7 @@ public class CharacterMovement : MonoBehaviour
 
     public void SetAble(bool value)
     {
+        Debug.Log("Hi");
         isAble = value;
     }
 
@@ -123,21 +123,21 @@ public class CharacterMovement : MonoBehaviour
         {
             if (Physics.Raycast(transform.position, Vector3.down, distToGround + 0.1f))
             {
-                Debug.Log("grounded" + groundType());
+               // Debug.Log("grounded" + groundType());
                 return true;
             }
-            Debug.Log("not grounded");
+            //Debug.Log("not grounded");
             return false;
 
 
         }
 
         //returns the name of the platform currently being stood on
-        string groundType()
-        {
-            RaycastHit hit;
-            Physics.Raycast(transform.position, Vector3.down, out hit, distToGround + 0.1f);
-            return hit.transform.name;
-        }
+        //string groundType()
+        //{
+        //    RaycastHit hit;
+        //    Physics.Raycast(transform.position, Vector3.down, out hit, distToGround + 0.1f);
+        //    return hit.transform.name;
+        //}
     }
 }
