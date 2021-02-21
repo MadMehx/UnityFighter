@@ -6,6 +6,10 @@ public class Slam_Attack : MonoBehaviour
 {
     public CharacterController controller3;
     public Animator animator;
+
+    public CharacterMovement a;
+    a = GameObject.GetComponent<CharacterMovement>();
+
     // Start is called before the first frame update
     void Start()
     {
@@ -18,14 +22,9 @@ public class Slam_Attack : MonoBehaviour
         //Do slam animation
         if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
         {
-            Debug.Log("Running");
             if(Input.GetKeyDown(KeyCode.C))
             {
-                Debug.Log("Slammin");
                 animator.SetTrigger("Slam");
-                animator.ResetTrigger("Hit_1");
-                animator.ResetTrigger("Hit_2");
-
             }
         }
     }

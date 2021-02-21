@@ -9,6 +9,7 @@ public class CharacterMovement : MonoBehaviour
     public float speed = 6f;
     static float right = 0;
     static float left = 180;
+    public bool isAble = true;
 
     void Start()
     {
@@ -51,7 +52,7 @@ public class CharacterMovement : MonoBehaviour
         }
 
         //moves the player along the direction vector
-        if (direction.magnitude >= 0.1f)
+        if (direction.magnitude >= 0.1f && isAble)
         {
             controller.Move(direction * speed * Time.deltaTime);
         }
@@ -71,5 +72,10 @@ public class CharacterMovement : MonoBehaviour
     void FlipAnimation()
     {
         animator.SetTrigger("Flip");
+    }
+
+    public void SetAble(bool value)
+    {
+        isAble = value;
     }
 }
