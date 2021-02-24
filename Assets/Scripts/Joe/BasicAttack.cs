@@ -11,6 +11,11 @@ public class BasicAttack : MonoBehaviour
     float nextAttackTime = 0f;
     float lastTap = 0f;
 
+    public Transform Attack1Hitbox;
+    public Transform Attack2Hitbox;
+    public float attackRange = 0.5f;
+    public LayerMask enemyLayers;
+
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -38,15 +43,51 @@ public class BasicAttack : MonoBehaviour
 
     void Attack()
     {
+        //play attack animation
         animator.SetTrigger("Hit_1");
         lastTap = Time.time;
+
+        //detect enemies
+        Collider[] hitenemies = Physics.OverlapSphere(Attack1Hitbox.position, attackRange, enemyLayers);
+
+        //damage enemies
+        foreach (var enemy in hitenemies)
+        {
+            Debug.Log("We hit the dummy!");
+        }
     }
 
     void AttackFollowUp()
     {
         if (Input.GetKeyDown(KeyCode.C) && (lastTap + 0.5f >= Time.time))
         {
+            //play attack animation
             animator.SetTrigger("Hit_2");
+
+            //detect enemies
+            Collider[] hitenemies = Physics.OverlapSphere(Attack1Hitbox.position, attackRange, enemyLayers);
+
+            //damage enemies
+            foreach (var enemy in hitenemies)
+            {
+                Debug.Log("We hit the dummy with a follow up!");
+            }
         }
+    }
+
+    void OnDrawGizmosSelected()
+    {
+        if (Attack1Hitbox == null)
+        {
+            return;
+        }
+        if (Attack2Hitbox == null)
+        {
+            return;
+        }
+
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireSphere(Attack1Hitbox.position, attackRange);
+        Gizmos.DrawWireSphere(Attack2Hitbox.position, attackRange);
     }
 }

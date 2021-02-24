@@ -9,6 +9,13 @@ public class Slam_Attack : MonoBehaviour
 
     public float attackRate = 1f;
     float nextAttackTime = 0f;
+    float lastTap = 0f;
+
+    public Transform SlamHitbox;
+    public Transform SlamHitboxSplash;
+    public float attackRange = 0.5f;
+    public float splashAttackRange = 10f;
+    public LayerMask enemyLayers;
 
     // Start is called before the first frame update
     void Start()
@@ -35,8 +42,21 @@ public class Slam_Attack : MonoBehaviour
 
     void doSlam()
     {
-        animator.SetTrigger("Slam");
+        if (lastTap + 0.5f <= Time.time)
+        {
+            animator.SetTrigger("Slam");
+            lastTap = Time.time;
+        }
     }
 
+    void OnDrawGizmosSelected()
+    {
+        if (SlamHitbox == null)
+        {
+            return;
+        }
 
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireSphere(SlamHitbox.position, attackRange);
+    }
 }
