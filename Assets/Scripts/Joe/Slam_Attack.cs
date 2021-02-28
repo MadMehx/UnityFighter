@@ -11,12 +11,6 @@ public class Slam_Attack : MonoBehaviour
     float nextAttackTime = 0f;
     float lastTap = 0f;
 
-    public Transform SlamHitbox;
-    public Transform SlamHitboxSplash;
-    public float attackRange = 0.5f;
-    public float splashAttackRange = 10f;
-    public LayerMask enemyLayers;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -31,7 +25,7 @@ public class Slam_Attack : MonoBehaviour
             //Do slam animation
             if (Input.GetAxisRaw("Horizontal") != 0)
             {
-                if (Input.GetKeyDown(KeyCode.C))
+                if (Input.GetKeyDown(KeyCode.C) && controller3.isGrounded)
                 {
                     doSlam();
                     nextAttackTime = Time.time + 1f / attackRate;
@@ -47,16 +41,5 @@ public class Slam_Attack : MonoBehaviour
             animator.SetTrigger("Slam");
             lastTap = Time.time;
         }
-    }
-
-    void OnDrawGizmosSelected()
-    {
-        if (SlamHitbox == null)
-        {
-            return;
-        }
-
-        Gizmos.color = Color.blue;
-        Gizmos.DrawWireSphere(SlamHitbox.position, attackRange);
     }
 }

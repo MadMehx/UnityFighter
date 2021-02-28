@@ -7,11 +7,9 @@ public class CharacterMovement : MonoBehaviour
     public CharacterController controller;
     public Animator animator;
     public float speed = 6f;
-    public float weight = 10;
-    public float jump = 10;
-    public float distToGround = 1f;
-
-    private float grav;
+    private float verticalVelocity;
+    public float fallSpeed = 4;
+    public float jumpPower = 4;
 
     static float right = 0;
     static float left = 180;
@@ -27,6 +25,19 @@ public class CharacterMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (controller.isGrounded)
+        {
+            verticalVelocity = -1;
+
+            if (Input.GetKeyDown(KeyCode.UpArrow))
+                verticalVelocity = jumpPower;
+        }
+        else
+        {
+            verticalVelocity -= fallSpeed * Time.deltaTime;
+        }
+        direction.y = verticalVelocity;
+
         //assigns direction based on player position
         float playerDirection = right;
         if (this.transform.eulerAngles.y == 180 || this.transform.eulerAngles.y == -180)
@@ -37,7 +48,6 @@ public class CharacterMovement : MonoBehaviour
         //when the player presses arrow keys or WASD, the character will move along the z or y axis
 
         float horizontal = Input.GetAxisRaw("Horizontal");
-        float vertical = Input.GetAxisRaw("Vertical");
 
         //depreciated
         //Vector3 direction = new Vector3(0f, vertical, horizontal).normalized;
@@ -73,9 +83,6 @@ public class CharacterMovement : MonoBehaviour
         {
             WalkingAnimation(false);
         }
-
-        //handles the gravity and jump mechanics
-        gravityHandler(vertical, horizontal);
     }
 
     void WalkingAnimation(bool value)
@@ -94,50 +101,4 @@ public class CharacterMovement : MonoBehaviour
         isAble = value;
     }
 
-    //handles jumping takes in the vertical and horizontal inputs from main
-    void gravityHandler(float v, float h)
-    {
-        if (grounded())
-        {
-            //Debug.Log("jumpable");
-            grav = -weight * Time.deltaTime;
-            if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W))
-            {
-                grav = jump;
-                //direction.y = jump;
-                //direction = new Vector3(0, jump, h / 2);
-            }
-        }
-        else
-        {
-            //Debug.Log("fall as all mortals must");
-            grav -= weight * Time.deltaTime;
-            //direction.y -= weight * Time.deltaTime;
-            //direction = new Vector3(0, direction.y - weight * Time.deltaTime, h / 2);
-            //direction *= Time.deltaTime;
-        }
-        direction = new Vector3(0, grav, 0);
-
-        //checks if grounded and what ground type
-        bool grounded()
-        {
-            if (Physics.Raycast(transform.position, Vector3.down, distToGround + 0.1f))
-            {
-               // Debug.Log("grounded" + groundType());
-                return true;
-            }
-            //Debug.Log("not grounded");
-            return false;
-
-
-        }
-
-        //returns the name of the platform currently being stood on
-        //string groundType()
-        //{
-        //    RaycastHit hit;
-        //    Physics.Raycast(transform.position, Vector3.down, out hit, distToGround + 0.1f);
-        //    return hit.transform.name;
-        //}
-    }
 }

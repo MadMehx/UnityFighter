@@ -28,7 +28,7 @@ public class BasicAttack : MonoBehaviour
         {
             if (Input.GetAxisRaw("Horizontal") == 0)
             {
-                if (Input.GetKeyDown(KeyCode.C))
+                if (Input.GetKeyDown(KeyCode.C) && controller2.isGrounded)
                 {
                     Attack();
                     nextAttackTime = Time.time + 1f / attackRate;
