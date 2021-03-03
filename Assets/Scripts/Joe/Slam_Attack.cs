@@ -11,6 +11,12 @@ public class Slam_Attack : MonoBehaviour
     float nextAttackTime = 0f;
     float lastTap = 0f;
 
+    public Transform SlamAttackHitbox1;
+    public Transform SlamAttackHitbox2;
+    public Transform SlamSplashDamageHitbox;
+    public float attackRange = 0.5f;
+    public LayerMask enemyLayers;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -41,5 +47,26 @@ public class Slam_Attack : MonoBehaviour
             animator.SetTrigger("Slam");
             lastTap = Time.time;
         }
+    }
+
+    void OnDrawGizmosSelected()
+    {
+        if (SlamAttackHitbox1 == null)
+        {
+            return;
+        }
+        if (SlamAttackHitbox2 == null)
+        {
+            return;
+        }
+        if (SlamSplashDamageHitbox == null)
+        {
+            return;
+        }
+
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireSphere(SlamAttackHitbox1.position, attackRange);
+        Gizmos.DrawWireSphere(SlamAttackHitbox2.position, attackRange);
+        Gizmos.DrawWireSphere(SlamSplashDamageHitbox.position, attackRange);
     }
 }

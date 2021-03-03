@@ -30,6 +30,12 @@ ModelImporter:
   - first:
       74: 1724749509914260530
     second: Joe_Smash_Recovery
+  - first:
+      74: 8938183837900847743
+    second: Joe_Fall
+  - first:
+      74: 3383090597961231042
+    second: Joe_Landing_Lag
   externalObjects: {}
   materials:
     materialImportMode: 1
@@ -208,7 +214,7 @@ ModelImporter:
       takeName: Joe|JoeAction
       internalID: 0
       firstFrame: 105
-      lastFrame: 120
+      lastFrame: 115
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -267,6 +273,64 @@ ModelImporter:
       internalID: 0
       firstFrame: 140
       lastFrame: 160
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Joe_Fall
+      takeName: Joe|JoeAction
+      internalID: 0
+      firstFrame: 115
+      lastFrame: 118
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Joe_Landing_Lag
+      takeName: Joe|JoeAction
+      internalID: 0
+      firstFrame: 118
+      lastFrame: 120
       wrapMode: 0
       orientationOffsetY: 0
       level: 0

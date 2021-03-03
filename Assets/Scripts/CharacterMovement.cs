@@ -25,19 +25,6 @@ public class CharacterMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (controller.isGrounded)
-        {
-            verticalVelocity = -1;
-
-            if (Input.GetKeyDown(KeyCode.UpArrow))
-                verticalVelocity = jumpPower;
-        }
-        else
-        {
-            verticalVelocity -= fallSpeed * Time.deltaTime;
-        }
-        direction.y = verticalVelocity;
-
         //assigns direction based on player position
         float playerDirection = right;
         if (this.transform.eulerAngles.y == 180 || this.transform.eulerAngles.y == -180)
@@ -55,7 +42,7 @@ public class CharacterMovement : MonoBehaviour
         direction.z = horizontal;
 
         //triggers the walk animation
-        if (horizontal != 0 && isAble)
+        if (horizontal != 0 && isAble && controller.isGrounded)
         {
             WalkingAnimation(true);
         }
@@ -83,6 +70,12 @@ public class CharacterMovement : MonoBehaviour
         {
             WalkingAnimation(false);
         }
+
+        //manages jumping and falling
+        if (isAble)
+        {
+            JumpingAndFalling();
+        }
     }
 
     void WalkingAnimation(bool value)
@@ -95,10 +88,33 @@ public class CharacterMovement : MonoBehaviour
         animator.SetTrigger("Flip");
     }
 
+    void JumpingAndFalling()
+    {
+        if (controller.isGrounded)
+        {
+            verticalVelocity = -1;
+
+            if (Input.GetKeyDown(KeyCode.UpArrow))
+            {
+                verticalVelocity = jumpPower;
+                animator.SetTrigger("Jump");
+            }
+            animator.SetBool("BackToIdle", true);
+        }
+        else
+        {
+            verticalVelocity -= fallSpeed * Time.deltaTime;
+            animator.SetBool("BackToIdle", false);
+        }
+        direction.y = verticalVelocity;
+        if (verticalVelocity < 0)
+            animator.SetTrigger("Falling");
+    }
+
     public void SetAble(bool value)
     {
-        Debug.Log("Hi");
         isAble = value;
     }
+
 
 }

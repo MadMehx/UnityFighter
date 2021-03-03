@@ -89,5 +89,6 @@ public class BasicAttack : MonoBehaviour
         Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(Attack1Hitbox.position, attackRange);
         Gizmos.DrawWireSphere(Attack2Hitbox.position, attackRange);
+
     }
 }

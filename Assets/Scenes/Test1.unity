@@ -366,7 +366,7 @@ Transform:
   m_GameObject: {fileID: 177462101}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 7.7489653, y: 0.43944, z: 19.628477}
+  m_LocalScale: {x: 2.3993123, y: 0.43944, z: 47.726948}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
@@ -706,7 +706,7 @@ Transform:
   m_Father: {fileID: 2121854675}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &737153074
+--- !u!1 &687273593
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -714,27 +714,27 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 737153075}
+  - component: {fileID: 687273594}
   m_Layer: 0
-  m_Name: Attack1Hitbox
+  m_Name: SlamAttackHitbox2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &737153075
+--- !u!4 &687273594
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 737153074}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.03, y: 0.41000006, z: -0.75}
+  m_GameObject: {fileID: 687273593}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 2091484191}
-  m_RootOrder: 1
+  m_Father: {fileID: 1915738579}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &795276025
 GameObject:
@@ -1482,6 +1482,11 @@ Transform:
   m_Father: {fileID: 1213740356}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &1392301043 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8713084058617821271, guid: 485a6a28ad27ea94783c18904c39e4ac, type: 3}
+  m_PrefabInstance: {fileID: 1935837996}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1433799966
 GameObject:
   m_ObjectHideFlags: 0
@@ -1540,6 +1545,36 @@ Transform:
   m_LocalScale: {x: 1.0000005, y: 1.0000001, z: 1.0000004}
   m_Children: []
   m_Father: {fileID: 680651658}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1566911344
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1566911345}
+  m_Layer: 0
+  m_Name: SlamAttackHitbox1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1566911345
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1566911344}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1392301043}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1664974068
@@ -1631,7 +1666,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1.0655681, z: 1}
   m_Children: []
   m_Father: {fileID: 2091484191}
-  m_RootOrder: 4
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1786112732
 GameObject:
@@ -1756,7 +1791,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1.0655681, z: 1}
   m_Children: []
   m_Father: {fileID: 2091484191}
-  m_RootOrder: 3
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1872519570
 GameObject:
@@ -1853,6 +1888,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &1915738579 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -2348623670948552074, guid: 485a6a28ad27ea94783c18904c39e4ac, type: 3}
+  m_PrefabInstance: {fileID: 1935837996}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1935837996
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1931,7 +1971,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1935837998}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 14c5c5d12ebdab441baa47ed7e0e5ec6, type: 3}
   m_Name: 
@@ -1996,36 +2036,13 @@ MonoBehaviour:
   controller3: {fileID: 2091484190}
   animator: {fileID: 1935838001}
   attackRate: 1
---- !u!1 &2030391619
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2030391620}
-  m_Layer: 0
-  m_Name: Attack2Hitbox
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2030391620
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2030391619}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.242, y: 0.41000006, z: -0.75}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 2091484191}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  SlamAttackHitbox1: {fileID: 1566911345}
+  SlamAttackHitbox2: {fileID: 687273594}
+  SlamSplashDamageHitbox: {fileID: 0}
+  attackRange: 0.5
+  enemyLayers:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!1 &2045287175
 GameObject:
   m_ObjectHideFlags: 0
@@ -2104,8 +2121,6 @@ Transform:
   m_LocalScale: {x: 1, y: 0.9384666, z: 1}
   m_Children:
   - {fileID: 1935837997}
-  - {fileID: 737153075}
-  - {fileID: 2030391620}
   - {fileID: 1826998278}
   - {fileID: 1680195438}
   m_Father: {fileID: 0}
@@ -2121,7 +2136,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2121854675}
   m_Layer: 0
-  m_Name: hand.L
+  m_Name: Attack1Hitbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
