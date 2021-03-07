@@ -11,8 +11,7 @@ public class Slam_Attack : MonoBehaviour
     float nextAttackTime = 0f;
     float lastTap = 0f;
 
-    public Transform SlamAttackHitbox1;
-    public Transform SlamAttackHitbox2;
+    public Transform SlamAttackHitboxSweetSpot;
     public Transform SlamSplashDamageHitbox;
     public float attackRange = 0.5f;
     public LayerMask enemyLayers;
@@ -46,16 +45,21 @@ public class Slam_Attack : MonoBehaviour
         {
             animator.SetTrigger("Slam");
             lastTap = Time.time;
+
+            //detect enemies
+            Collider[] hitenemies = Physics.OverlapSphere(SlamAttackHitboxSweetSpot.position, attackRange, enemyLayers);
+
+            //damage enemies
+            foreach (var enemy in hitenemies)
+            {
+                Debug.Log("We hit " + enemy.name + " with a big ol' SLAM");
+            }
         }
     }
 
     void OnDrawGizmosSelected()
     {
-        if (SlamAttackHitbox1 == null)
-        {
-            return;
-        }
-        if (SlamAttackHitbox2 == null)
+        if (SlamAttackHitboxSweetSpot == null)
         {
             return;
         }
@@ -65,8 +69,7 @@ public class Slam_Attack : MonoBehaviour
         }
 
         Gizmos.color = Color.blue;
-        Gizmos.DrawWireSphere(SlamAttackHitbox1.position, attackRange);
-        Gizmos.DrawWireSphere(SlamAttackHitbox2.position, attackRange);
+        Gizmos.DrawWireSphere(SlamAttackHitboxSweetSpot.position, attackRange);
         Gizmos.DrawWireSphere(SlamSplashDamageHitbox.position, attackRange);
     }
 }

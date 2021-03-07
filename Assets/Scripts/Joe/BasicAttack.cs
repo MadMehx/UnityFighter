@@ -53,7 +53,7 @@ public class BasicAttack : MonoBehaviour
         //damage enemies
         foreach (var enemy in hitenemies)
         {
-            Debug.Log("We hit the dummy!");
+            Debug.Log("We hit " + enemy.name);
         }
     }
 
@@ -70,7 +70,7 @@ public class BasicAttack : MonoBehaviour
             //damage enemies
             foreach (var enemy in hitenemies)
             {
-                Debug.Log("We hit the dummy with a follow up!");
+                Debug.Log("We hit " + enemy.name + " with a follow-up");
             }
         }
     }
@@ -89,6 +89,5 @@ public class BasicAttack : MonoBehaviour
         Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(Attack1Hitbox.position, attackRange);
         Gizmos.DrawWireSphere(Attack2Hitbox.position, attackRange);
-
     }
 }
