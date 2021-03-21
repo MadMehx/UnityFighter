@@ -7,6 +7,8 @@ public class BasicAttack : MonoBehaviour
     public CharacterController controller2;
     public Animator animator;
 
+    public int hit1Damage = 3;
+    public int hit2Damage = 3;
     public float attackRate = 2f;
     float nextAttackTime = 0f;
     float lastTap = 0f;
@@ -54,6 +56,9 @@ public class BasicAttack : MonoBehaviour
         foreach (var enemy in hitenemies)
         {
             Debug.Log("We hit " + enemy.name);
+            enemy.GetComponent<HealthScript>().TakeDamage(hit1Damage);
+
+            //assign hit-stun
         }
     }
 
@@ -71,6 +76,9 @@ public class BasicAttack : MonoBehaviour
             foreach (var enemy in hitenemies)
             {
                 Debug.Log("We hit " + enemy.name + " with a follow-up");
+                enemy.GetComponent<HealthScript>().TakeDamage(hit2Damage);
+
+                //assign hit-stun
             }
         }
     }

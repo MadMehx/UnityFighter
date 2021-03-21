@@ -568,6 +568,19 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: e71406f9a0e67304ca3ce1c1d924120c, type: 3}
   m_PrefabInstance: {fileID: 940846447}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &441191627
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 441191626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c8df98c9d97ac14cae2004ae7d8cbb9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MaxHealth: 100
 --- !u!136 &441191628
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1138,7 +1151,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: e71406f9a0e67304ca3ce1c1d924120c, type: 3}
       propertyPath: m_Name
-      value: Target
+      value: Dummy
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: e71406f9a0e67304ca3ce1c1d924120c, type: 3}
       propertyPath: m_Layer
@@ -1475,7 +1488,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1283135085}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.0049, y: 0.00024, z: 0.00339}
+  m_LocalPosition: {x: -0.00286, y: 0.0002, z: -0.0002}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1260743233}
@@ -1668,36 +1681,6 @@ Transform:
   m_Father: {fileID: 818399104}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1680195437
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1680195438}
-  m_Layer: 0
-  m_Name: SlamHitboxSweetSpot
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1680195438
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1680195437}
-  m_LocalRotation: {x: -0, y: -1, z: -0, w: 0}
-  m_LocalPosition: {x: -0.03, y: -1.01, z: -0.89}
-  m_LocalScale: {x: 1, y: 1.0655681, z: 1}
-  m_Children: []
-  m_Father: {fileID: 2091484191}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1786112732
 GameObject:
   m_ObjectHideFlags: 0
@@ -1792,36 +1775,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1826998277
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1826998278}
-  m_Layer: 0
-  m_Name: SlamHitboxSplashDamage
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1826998278
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1826998277}
-  m_LocalRotation: {x: -0, y: -1, z: -0, w: 0}
-  m_LocalPosition: {x: -0.03, y: -1.01, z: -0.88999987}
-  m_LocalScale: {x: 1, y: 1.0655681, z: 1}
-  m_Children: []
-  m_Father: {fileID: 2091484191}
-  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1872519570
 GameObject:
@@ -2008,6 +1961,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller2: {fileID: 2091484190}
   animator: {fileID: 1935838001}
+  hit1Damage: 3
+  hit2Damage: 3
   attackRate: 3
   Attack1Hitbox: {fileID: 2121854675}
   Attack2Hitbox: {fileID: 119955568}
@@ -2065,10 +2020,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller3: {fileID: 2091484190}
   animator: {fileID: 1935838001}
+  attackSweetSpotDamage: 10
   attackRate: 1
+  hitboxStartTime: 0.5
+  hitboxEndTime: 0.7
+  startAnimationTime: 0
   SlamAttackHitboxSweetSpot: {fileID: 1283135086}
   SlamSplashDamageHitbox: {fileID: 1283135086}
-  attackRange: 0.1
+  attackRange: 0.5
+  splashRange: 0
   enemyLayers:
     serializedVersion: 2
     m_Bits: 256
@@ -2150,8 +2110,6 @@ Transform:
   m_LocalScale: {x: 1, y: 0.9384666, z: 1}
   m_Children:
   - {fileID: 1935837997}
-  - {fileID: 1826998278}
-  - {fileID: 1680195438}
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
