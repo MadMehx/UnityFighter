@@ -167,9 +167,8 @@ MonoBehaviour:
   controller: {fileID: 762788003}
   animator: {fileID: 0}
   speed: 6
-  weight: 3
-  jump: 3
-  distToGround: 0.1
+  fallSpeed: 4
+  jumpPower: 4
 --- !u!143 &762788003
 CharacterController:
   m_ObjectHideFlags: 0
