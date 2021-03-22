@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
+using System.Linq;
 
 public class Slam_Attack : MonoBehaviour
 {
@@ -8,6 +10,7 @@ public class Slam_Attack : MonoBehaviour
     public Animator animator;
 
     public int attackSweetSpotDamage = 10;
+    public int splashDamage = 5;
     public float attackRate = 1f;
     float nextAttackTime = 0f;
     float lastTap = 0f;
@@ -15,9 +18,12 @@ public class Slam_Attack : MonoBehaviour
     public float hitboxStartTime = 0.5f;
     public float hitboxEndTime = 0.7f;
     public float startAnimationTime = 0f;
+    public float splashLength = 0.1f;
 
     public Transform SlamAttackHitboxSweetSpot;
-    public Transform SlamSplashDamageHitbox;
+    public Transform SlamSplashDamageHitbox1;
+    public Transform SlamSplashDamageHitbox2;
+    public Transform SlamSplashDamageHitbox3;
     public float attackRange = 0.5f;
     public float splashRange = 0.5f;
     public LayerMask enemyLayers;
@@ -49,24 +55,30 @@ public class Slam_Attack : MonoBehaviour
             }
         }
 
-        if (Time.time >= startAnimationTime + hitboxStartTime && Time.time <= startAnimationTime + hitboxEndTime)
+        if (Time.time > 0.8f && Time.time >= startAnimationTime + hitboxStartTime && Time.time <= startAnimationTime + hitboxEndTime)
         {
             //detect enemies
             Collider[] hitenemies = Physics.OverlapSphere(SlamAttackHitboxSweetSpot.position, attackRange, enemyLayers);
 
             //damage enemies
-            foreach (var enemy in hitenemies)
-            {
-                if (!alreadyHit.Contains(enemy))
-                {
-                    Debug.Log("We hit " + enemy.name + " with a big ol' SLAM");
-                    enemy.GetComponent<HealthScript>().TakeDamage(attackSweetSpotDamage);
-                    alreadyHit.Add(enemy);
-                }
-            }
+            doDamage(hitenemies, attackSweetSpotDamage);
+
         }//checks if the current time is during when we want the hitbox to be active
 
-        if (Time.time > startAnimationTime + hitboxEndTime)//if the animation is over, the array is emptied
+        if (Time.time > 0.8f && Time.time >= startAnimationTime + hitboxEndTime && Time.time <= startAnimationTime + hitboxEndTime + splashLength)
+        {
+            //detects enemies for each splash damage hitbox
+            Collider[] hitBySplash1 = Physics.OverlapSphere(SlamSplashDamageHitbox1.position, splashRange, enemyLayers);
+            Collider[] hitBySplash2 = Physics.OverlapSphere(SlamSplashDamageHitbox2.position, splashRange, enemyLayers);
+            Collider[] hitBySplash3 = Physics.OverlapSphere(SlamSplashDamageHitbox3.position, splashRange, enemyLayers);
+
+            Collider[] hitBySplashTotal = hitBySplash1.Concat(hitBySplash2.Concat(hitBySplash3)).ToArray();
+
+            //goes through and damages each enemy based on which hitbox hit
+            doDamage(hitBySplashTotal, splashDamage);
+        }
+
+        if (Time.time > startAnimationTime + hitboxEndTime + splashLength)//if the animation is over, the array is emptied
         {
             alreadyHit.Clear();
         }
@@ -81,19 +93,46 @@ public class Slam_Attack : MonoBehaviour
         }
     }
 
+    void doDamage(Collider[] hitenemies, int attackDamage)
+    {
+        foreach (var enemy in hitenemies)
+        {
+            if (!alreadyHit.Contains(enemy))
+            {
+                enemy.GetComponent<HealthScript>().TakeDamage(attackDamage);
+                Debug.Log("We hit " + enemy.name + " with " + attackDamage + " power. They have " + 
+                    enemy.GetComponent<HealthScript>().getHealth() + " health left");
+
+                alreadyHit.Add(enemy);
+            }
+        }
+    }
+
     void OnDrawGizmosSelected()
     {
         if (SlamAttackHitboxSweetSpot == null)
         {
             return;
         }
-        if (SlamSplashDamageHitbox == null)
+
+        if (SlamSplashDamageHitbox1 == null)
+        {
+            return;
+        }
+        if (SlamSplashDamageHitbox2 == null)
+        {
+            return;
+        }
+        if (SlamSplashDamageHitbox3 == null)
         {
             return;
         }
 
         Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(SlamAttackHitboxSweetSpot.position, attackRange);
-        Gizmos.DrawWireSphere(SlamSplashDamageHitbox.position, splashRange);
+
+        Gizmos.DrawWireSphere(SlamSplashDamageHitbox1.position, splashRange);
+        Gizmos.DrawWireSphere(SlamSplashDamageHitbox2.position, splashRange);
+        Gizmos.DrawWireSphere(SlamSplashDamageHitbox3.position, splashRange);
     }
 }

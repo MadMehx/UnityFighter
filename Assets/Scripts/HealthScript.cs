@@ -29,6 +29,11 @@ public class HealthScript : MonoBehaviour
         }
     }
 
+    public int getHealth()
+    {
+        return currentHealth;
+    }
+
     void Die()
     {
         Debug.Log("The man is down!!");
