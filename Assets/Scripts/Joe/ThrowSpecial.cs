@@ -17,6 +17,9 @@ public class ThrowSpecial : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //spawn dumbell and start curl animation
+        if (Input.GetKeyDown(KeyCode.V))
+        {
+            Instantiate(dumbellPrefab, throwPoint.position, throwPoint.rotation);
+        }
     }
 }
