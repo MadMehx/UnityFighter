@@ -2113,6 +2113,35 @@ MonoBehaviour:
   enemyLayers:
     serializedVersion: 2
     m_Bits: 256
+--- !u!114 &1935838003
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1935837998}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c8df98c9d97ac14cae2004ae7d8cbb9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MaxHealth: 100
+--- !u!114 &1935838004
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1935837998}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a48d8e622c324bf4ea0289e37d111806, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hurtIdle: {fileID: 8868475605353879851, guid: 485a6a28ad27ea94783c18904c39e4ac, type: 3}
+  death: {fileID: 8868475605353879851, guid: 485a6a28ad27ea94783c18904c39e4ac, type: 3}
+  healthToHurt: 40
+  animationName: Joe_Idle
 --- !u!1 &1956381058
 GameObject:
   m_ObjectHideFlags: 0
