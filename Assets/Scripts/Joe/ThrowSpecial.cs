@@ -7,6 +7,13 @@ public class ThrowSpecial : MonoBehaviour
     public Transform throwPoint;
     public GameObject dumbellPrefab;
 
+    public CharacterController controller4;
+    public Animator animator;
+
+    float nextAttackTime = 0f;
+    float lastTap = 0f;
+    public float attackRate = 2f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -17,9 +24,22 @@ public class ThrowSpecial : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.V))
+        if (Time.time >= nextAttackTime)
         {
-            Instantiate(dumbellPrefab, throwPoint.position, throwPoint.rotation);
+            if (Input.GetAxisRaw("Horizontal") == 0)
+            {
+                if (Input.GetKeyDown(KeyCode.V) && controller4.isGrounded)
+                {
+                    Special();
+                    nextAttackTime = Time.time + 1f / attackRate;
+                }
+            }
         }
+    }
+
+    void Special()
+    {
+        Instantiate(dumbellPrefab, throwPoint.position, throwPoint.rotation, throwPoint);
+        animator.SetTrigger("Curl");
     }
 }
