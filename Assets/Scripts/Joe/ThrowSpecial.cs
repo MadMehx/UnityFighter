@@ -11,13 +11,14 @@ public class ThrowSpecial : MonoBehaviour
     public Animator animator;
 
     float nextAttackTime = 0f;
-    float lastTap = 0f;
+    //float lastTap = 0f;
     public float attackRate = 2f;
+    public string idleStateName = "";
 
     // Start is called before the first frame update
     void Start()
     {
-        int charge = 0;
+        int charge = 1;
         Debug.Log(charge);
     }
 
@@ -28,7 +29,7 @@ public class ThrowSpecial : MonoBehaviour
         {
             if (Input.GetAxisRaw("Horizontal") == 0)
             {
-                if (Input.GetKeyDown(KeyCode.V) && controller4.isGrounded)
+                if (Input.GetKey(KeyCode.V) && controller4.isGrounded)
                 {
                     Special();
                     nextAttackTime = Time.time + 1f / attackRate;
