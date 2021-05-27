@@ -9,7 +9,6 @@ public class During_Falling : StateMachineBehaviour
     {
         CharacterMovement player = animator.GetComponent<CharacterMovement>();
         player.SetAble(false);
-        Debug.Log("Hey");
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

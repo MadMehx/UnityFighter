@@ -10,37 +10,60 @@ public class ThrowSpecial : MonoBehaviour
     public CharacterController controller4;
     public Animator animator;
 
-    float nextAttackTime = 0f;
-    //float lastTap = 0f;
-    public float attackRate = 2f;
     public string idleStateName = "";
+    public int charge;
+
+    bool justPressed = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        int charge = 1;
-        Debug.Log(charge);
+        charge = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Time.time >= nextAttackTime)
+        if (Input.GetKey(KeyCode.DownArrow) && Input.GetKeyDown(KeyCode.V) && charge > 0)
         {
-            if (Input.GetAxisRaw("Horizontal") == 0)
+            ActualThrow(charge);//calls to throw the object
+            charge = 0;
+        }
+        else if (Input.GetAxisRaw("Horizontal") == 0 && !Input.GetKey(KeyCode.DownArrow))
+        {
+            if (Input.GetKey(KeyCode.V) && controller4.isGrounded)
             {
-                if (Input.GetKey(KeyCode.V) && controller4.isGrounded)
+                if (!justPressed)
                 {
-                    Special();
-                    nextAttackTime = Time.time + 1f / attackRate;
+                    Instantiate(dumbellPrefab, throwPoint.position, throwPoint.rotation, throwPoint);
                 }
+                animator.SetBool("Curling", true);
+                justPressed = true;
             }
+            else
+            {
+                animator.SetBool("Curling", false);
+                justPressed = false;
+            }
+        }
+        else
+        {
+            animator.SetBool("Curling", false);
+            justPressed = false;
         }
     }
 
-    void Special()
+    public void Joe_Charge_Up()
     {
+        charge++;
+    }
+
+    void ActualThrow(int chargeLevel)
+    {
+        //calls animator to perform throw
+        animator.SetTrigger("Throw");
+
+        //creates game object
         Instantiate(dumbellPrefab, throwPoint.position, throwPoint.rotation, throwPoint);
-        animator.SetTrigger("Curl");
     }
 }
