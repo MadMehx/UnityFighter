@@ -13,6 +13,8 @@ public class ThrowSpecial : MonoBehaviour
     public string idleStateName = "";
     public int charge;
 
+    GameObject dumbell;
+
     bool justPressed = false;
 
     // Start is called before the first frame update
@@ -35,7 +37,7 @@ public class ThrowSpecial : MonoBehaviour
             {
                 if (!justPressed)
                 {
-                    Instantiate(dumbellPrefab, throwPoint.position, throwPoint.rotation, throwPoint);
+                    dumbell = (GameObject)Instantiate(dumbellPrefab, throwPoint.position, throwPoint.rotation, throwPoint);
                 }
                 animator.SetBool("Curling", true);
                 justPressed = true;
@@ -55,15 +57,51 @@ public class ThrowSpecial : MonoBehaviour
 
     public void Joe_Charge_Up()
     {
-        charge++;
+        if (charge < 10)
+        {
+            charge++;
+        }
+    }
+    public void Release_Dumbell()
+    {
+        if (!dumbell)
+        {
+            return;
+        }
+        dumbell.GetComponent<Dumbell>().Release();
+    }
+    public int getCharge()
+    {
+        return charge;
     }
 
     void ActualThrow(int chargeLevel)
     {
-        //calls animator to perform throw
-        animator.SetTrigger("Throw");
+        if (charge == 1 || charge == 4 || charge == 7)
+        {
+            //calls animator to perform throw
+            animator.SetTrigger("Throw");
 
-        //creates game object
-        Instantiate(dumbellPrefab, throwPoint.position, throwPoint.rotation, throwPoint);
+            //creates game object
+            dumbell = (GameObject)Instantiate(dumbellPrefab, throwPoint.position, throwPoint.rotation, throwPoint);
+        }
+        else if (charge == 2 || charge == 5 || charge == 8)
+        {
+            //calls animator to perform disc
+
+            //creates game object
+        }
+        else if (charge == 3 || charge == 6 || charge == 9)
+        {
+            //calls animator to perform roll
+
+            //creates game object
+        }
+        else if (charge == 10)
+        {
+            //calls animator to perform Big Boy
+
+            //creates game object
+        }
     }
 }

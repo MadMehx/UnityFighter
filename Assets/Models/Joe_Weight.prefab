@@ -113,7 +113,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 1
+  m_CollisionDetection: 3
 --- !u!114 &-849458607175959210
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -126,6 +126,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca18d377a8f1c0a44a2771047d0e8478, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dumbellSpeed: 1
+  throwSpecial: {fileID: 0}
+  dumbellSpeed: 4
   modifier: 1
   rb: {fileID: -1530467688601145420}
+  Joe_Animator: {fileID: 0}
