@@ -101,7 +101,7 @@ public class CharacterMovement : MonoBehaviour
             }
             animator.SetBool("BackToIdle", true);
         }
-        else //if joe is in the air
+        else
         {
             verticalVelocity -= fallSpeed * Time.deltaTime;
             animator.SetBool("BackToIdle", false);

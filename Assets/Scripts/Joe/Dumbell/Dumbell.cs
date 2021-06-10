@@ -6,9 +6,8 @@ public class Dumbell : MonoBehaviour
 {
     public ThrowSpecial throwSpecial;
 
-    [SerializeField]private float dumbellInitialZSpeed = 1f;
-    [SerializeField]private float dumbellInitialYSpeed = 1f;
-    [SerializeField]private float fallSpeed = 4;
+    public float dumbellSpeed = 4f;
+    public float modifier = 1f;
     public Rigidbody rb;
 
     public Animator Joe_Animator;
@@ -16,14 +15,15 @@ public class Dumbell : MonoBehaviour
     private AnimatorClipInfo[] clipInfo;
     private int charge;
     private bool released = false;
-    private int[] DamageValues = new int[10] {6, 3, 10, 12, 9, 20, 18, 15, 30, 33};//stores damage values for the number of pumps done
+    private bool hit = false;
+
+    Vector3 throwPath;
 
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log(charge);
-        Joe_Animator = transform.parent.root.gameObject.transform.GetComponentInChildren<Animator>();
-        //assigns the joe animator to a variable so we can reference which animation is happening
+        Joe_Animator = transform.parent.root.gameObject.transform.GetComponentInChildren<Animator>();//assigns the joe animator to a variable so we can reference which animation is happening
+        //rb.velocity = new Vector3(0,0,1) * dumbellSpeed * modifier;
     }
 
     // Update is called once per frame
@@ -35,50 +35,30 @@ public class Dumbell : MonoBehaviour
         {
             if (!Input.GetKey(KeyCode.V) || Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") > 0)
             {
-                if (!released)
-                {
-                    Destroy(gameObject);
-                }
+                Destroy(gameObject);
             }
         }
 
-        if (released)
+        if (released && !hit)
         {
-            rb.velocity += new Vector3(0, (-fallSpeed * Time.deltaTime), 0);
+            rb.velocity = new Vector3(0, 0, 1) * dumbellSpeed * modifier;
         }
     }
 
-    public void setCharge(int chargeFromThrowSpecial = 1)
+    private void OnTriggerEnter(Collider hitInfo)
     {
-        charge = chargeFromThrowSpecial;
-    }
-     
-    private void OnTriggerEnter(Collider hitInfo)// is called when the dumbell collides with something
-    {
-        if (!released || charge < 1 || charge > 10)
+        if (!released)
         {
             return;
         }
-        try
-        {
-            hitInfo.GetComponent<HealthScript>().TakeDamage(DamageValues[charge-1]);
-
-            Debug.Log("We hit " + hitInfo.name + "with " + DamageValues[charge-1] + " power. They have " +
-                    hitInfo.GetComponent<HealthScript>().getHealth() + " health left");
-        }
-        catch 
-        {
-            Debug.Log("Hit a wall or something");
-        }
-        Destroy(gameObject);
+        rb.velocity = new Vector3(0, -1, 0) * dumbellSpeed * modifier;
+        hit = true;
     }
 
-    public void Release()// called when the dumbell is ready to leave Joe's hand.
+    public void Release()
     {
         this.transform.parent = null;
         this.transform.position = new Vector3(0, transform.position.y, transform.position.z);
         released = true;
-
-        rb.velocity = new Vector3(0, dumbellInitialYSpeed, dumbellInitialZSpeed);//launches dumbbell
     }
 }

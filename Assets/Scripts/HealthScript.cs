@@ -21,7 +21,6 @@ public class HealthScript : MonoBehaviour
     public void TakeDamage(int attackDamage = 5)
     {
         currentHealth -= attackDamage;
-
         //play hurt animation
 
         if (currentHealth <= 0)
