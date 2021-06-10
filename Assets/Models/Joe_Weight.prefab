@@ -127,7 +127,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwSpecial: {fileID: 0}
-  dumbellSpeed: 4
-  modifier: 1
+  dumbellInitialZSpeed: 8
+  dumbellInitialYSpeed: 1
+  fallSpeed: 10
   rb: {fileID: -1530467688601145420}
   Joe_Animator: {fileID: 0}

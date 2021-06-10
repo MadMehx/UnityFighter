@@ -28,7 +28,7 @@ public class ThrowSpecial : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.DownArrow) && Input.GetKeyDown(KeyCode.V) && charge > 0)
         {
-            ActualThrow(charge);//calls to throw the object
+            ActualThrow();//calls to throw the object
             charge = 0;
         }
         else if (Input.GetAxisRaw("Horizontal") == 0 && !Input.GetKey(KeyCode.DownArrow))
@@ -75,7 +75,7 @@ public class ThrowSpecial : MonoBehaviour
         return charge;
     }
 
-    void ActualThrow(int chargeLevel)
+    private void ActualThrow()
     {
         if (charge == 1 || charge == 4 || charge == 7)
         {
@@ -84,6 +84,7 @@ public class ThrowSpecial : MonoBehaviour
 
             //creates game object
             dumbell = (GameObject)Instantiate(dumbellPrefab, throwPoint.position, throwPoint.rotation, throwPoint);
+            dumbell.GetComponent<Dumbell>().setCharge(charge);
         }
         else if (charge == 2 || charge == 5 || charge == 8)
         {
