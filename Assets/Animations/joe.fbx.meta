@@ -52,11 +52,16 @@ ModelImporter:
       74: 6836499144835290024
     second: Joe|Joe_Special_Throw
   - first:
+<<<<<<< Updated upstream
       74: -3932483952246000367
     second: Joe|Joe_Special_Throw2
   - first:
       74: -7417137404914370741
     second: Joe|Joe_Special_Throw3
+=======
+      74: 4181647067165079198
+    second: Joe|Plane.001Action
+>>>>>>> Stashed changes
   externalObjects: {}
   materials:
     materialImportMode: 1
