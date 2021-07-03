@@ -12,6 +12,7 @@ public class Dumbell : MonoBehaviour
     public Rigidbody rb;
 
     public Animator Joe_Animator;
+    public GameObject Joe;
 
     private AnimatorClipInfo[] clipInfo;
     private int charge;
@@ -21,9 +22,9 @@ public class Dumbell : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log(charge);
         Joe_Animator = transform.parent.root.gameObject.transform.GetComponentInChildren<Animator>();
         //assigns the joe animator to a variable so we can reference which animation is happening
+        Joe = transform.parent.root.gameObject;
     }
 
     // Update is called once per frame
@@ -44,7 +45,8 @@ public class Dumbell : MonoBehaviour
 
         if (released)
         {
-            rb.velocity += new Vector3(0, (-fallSpeed * Time.deltaTime), 0);
+
+                rb.velocity += new Vector3(0, (-fallSpeed * Time.deltaTime), 0);
         }
     }
 
@@ -70,7 +72,9 @@ public class Dumbell : MonoBehaviour
         {
             Debug.Log("Hit a wall or something");
         }
-        Destroy(gameObject);
+
+        if(hitInfo.name != "Joe_Player")
+            Destroy(gameObject);
     }
 
     public void Release()// called when the dumbell is ready to leave Joe's hand.
@@ -79,6 +83,20 @@ public class Dumbell : MonoBehaviour
         this.transform.position = new Vector3(0, transform.position.y, transform.position.z);
         released = true;
 
-        rb.velocity = new Vector3(0, dumbellInitialYSpeed, dumbellInitialZSpeed);//launches dumbbell
+        if (getDirection() == 1)//only if Joe is facing right
+        {
+            rb.velocity = new Vector3(0, dumbellInitialYSpeed, dumbellInitialZSpeed);//launches dumbbell    
+        }
+        else if (getDirection() == -1)
+        {
+            rb.velocity = new Vector3(0, dumbellInitialYSpeed, -dumbellInitialZSpeed);//launches dumbbell 
+        }
+        else
+            return;
+    }
+
+    public int getDirection()
+    {
+        return Joe.GetComponentInChildren<CharacterMovement>().ReturnDirection();
     }
 }

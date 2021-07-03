@@ -56,7 +56,10 @@ ModelImporter:
     second: Joe|Joe_Special_Throw2
   - first:
       74: -7417137404914370741
-    second: Joe|Joe_Special_Throw3
+    second: Joe|Joe_Special_Barbell
+  - first:
+      74: 396652447690779142
+    second: Joe|Joe_Special_Big_Throw
   externalObjects: {}
   materials:
     materialImportMode: 1
@@ -535,7 +538,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Joe|Joe_Special_Throw2
+      name: Joe|Joe_Special_Big_Throw
       takeName: Joe|Joe_Special_Throw2
       internalID: 0
       firstFrame: 0
@@ -564,7 +567,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Joe|Joe_Special_Throw3
+      name: Joe|Joe_Special_Barbell
       takeName: Joe|Joe_Special_Throw3
       internalID: 0
       firstFrame: 0

@@ -116,5 +116,21 @@ public class CharacterMovement : MonoBehaviour
         isAble = value;
     }
 
+    public int ReturnDirection()
+    {
+        if (this.transform.eulerAngles.y == 180 || this.transform.eulerAngles.y == -180)
+        {
+            return -1;
+        }
+        else if (this.transform.eulerAngles.y == 0 || this.transform.eulerAngles.y == 360)
+        {
+            return 1;
+        }
+        else
+        {
+            return 0;
+        }
+    }
+
 
 }

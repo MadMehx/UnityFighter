@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class ThrowSpecial : MonoBehaviour
 {
-    public Transform throwPoint;
+    public Transform dumbbellThrowPoint;
+    public Transform barbellThrowPoint;
     public GameObject dumbellPrefab;
+    public GameObject barbellPrefab;
 
     public CharacterController controller4;
     public Animator animator;
@@ -13,7 +15,7 @@ public class ThrowSpecial : MonoBehaviour
     public string idleStateName = "";
     public int charge;
 
-    GameObject dumbell;
+    GameObject weight;
 
     bool justPressed = false;
 
@@ -26,7 +28,7 @@ public class ThrowSpecial : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.DownArrow) && Input.GetKeyDown(KeyCode.V) && charge > 0)
+        if (Input.GetKey(KeyCode.DownArrow) && Input.GetKeyDown(KeyCode.V) && charge > 0) //must have V and down pressed down
         {
             ActualThrow();//calls to throw the object
             charge = 0;
@@ -37,7 +39,7 @@ public class ThrowSpecial : MonoBehaviour
             {
                 if (!justPressed)
                 {
-                    dumbell = (GameObject)Instantiate(dumbellPrefab, throwPoint.position, throwPoint.rotation, throwPoint);
+                    weight = (GameObject)Instantiate(dumbellPrefab, dumbbellThrowPoint.position, dumbbellThrowPoint.rotation, dumbbellThrowPoint);
                 }
                 animator.SetBool("Curling", true);
                 justPressed = true;
@@ -64,11 +66,11 @@ public class ThrowSpecial : MonoBehaviour
     }
     public void Release_Dumbell()
     {
-        if (!dumbell)
+        if (!weight)
         {
             return;
         }
-        dumbell.GetComponent<Dumbell>().Release();
+        weight.GetComponent<Dumbell>().Release();
     }
     public int getCharge()
     {
@@ -83,20 +85,23 @@ public class ThrowSpecial : MonoBehaviour
             animator.SetTrigger("Throw");
 
             //creates game object
-            dumbell = (GameObject)Instantiate(dumbellPrefab, throwPoint.position, throwPoint.rotation, throwPoint);
-            dumbell.GetComponent<Dumbell>().setCharge(charge);
+            weight = (GameObject)Instantiate(dumbellPrefab, dumbbellThrowPoint.position, dumbbellThrowPoint.rotation, dumbbellThrowPoint);
+            weight.GetComponent<Dumbell>().setCharge(charge);
         }
         else if (charge == 2 || charge == 5 || charge == 8)
         {
             //calls animator to perform disc
+            animator.SetTrigger("Disc");
 
             //creates game object
         }
         else if (charge == 3 || charge == 6 || charge == 9)
         {
             //calls animator to perform roll
+            animator.SetTrigger("Roll");
 
             //creates game object
+            weight = (GameObject)Instantiate(barbellPrefab, barbellThrowPoint.position, barbellThrowPoint.rotation, barbellThrowPoint);
         }
         else if (charge == 10)
         {
